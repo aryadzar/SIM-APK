@@ -134,7 +134,7 @@ if(isset($_POST["ubah_teknisi"])){
                           </div>
                         </div>
 
-                        <a href="hapus-teknisi.php?id_teknisi=<?= $teknisi["id_teknisi"]?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Teknisi ?')">hapus</a>
+                        <a href="hapus-teknisi.php?id_teknisi=<?= $teknisi["id_teknisi"]?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Teknisi ?')">Hapus</a>
                     </td>
             </tr>
             <?php endforeach; ?>
@@ -196,6 +196,7 @@ if(isset($_POST["ubah_teknisi"])){
   </div>
 </div>
 
+<script src="../DataTables/datatables.js"></script>
 
 <script>
     function togglePassword(id) {

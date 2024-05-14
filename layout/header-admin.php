@@ -25,7 +25,7 @@ $result = mysqli_fetch_assoc($query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d931a8b882.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/sim-apk-logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../DataTables/datatables.css" />    
     <style>
         *{
             font-family: "Poppins", sans-serif;

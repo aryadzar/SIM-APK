@@ -79,20 +79,31 @@ $data_pesawat = select("SELECT * FROM pesawat");
             <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                 <div class="col">
                     <div class="mt-3">      
-                        <label for="" class="form-label ">Username Teknisi <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" name="username_teknisi" placeholder="Username Teknisi" required>
+                        <label for="" class="form-label ">Nomor Registrasi <span style="color:red;">*</span></label>
+                        <input type="number" class="form-control" name="nomor_registrasi" placeholder="Nomor registrasi" required>
                     </div>
                     <div class="mt-3">
-                        <label for="" class="form-label">Password Teknisi <span style="color:red;">*</span></label>
-                        <input type="password" class="form-control" name="password_teknisi" placeholder="Password Teknisi" required >
+                        <label for="" class="form-label">Nama Pesawat <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" name="nama_pesawat" placeholder="Nama Pesawat" required >
                     </div>
                     <div class="mt-3">
-                        <label for="" class="form-label">NIP Teknisi <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" name="nip_teknisi" placeholder="NIP Teknisi" required>
+                        <label for="" class="form-label">Boeing Pesawat <span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" name="boeing_pesawat" placeholder="Boeing Pesawat" required>
                     </div>
                     <div class="mt-3">
-                        <label for="" class="form-label">Nama Teknisi <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" name="nama_teknisi" placeholder="Nama Teknisi" required>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+
                     </div>
                     <div class="mt-3">
                         <label for="" class="form-label">Gambar Teknisi <span style="color:red;">*</span></label>
@@ -112,7 +123,6 @@ $data_pesawat = select("SELECT * FROM pesawat");
   </div>
 </div>
 
-<script src="../DataTables/datatables.js"></script>
 
 
 

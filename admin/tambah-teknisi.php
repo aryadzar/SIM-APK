@@ -197,7 +197,6 @@ if(isset($_POST["ubah_teknisi"])){
   </div>
 </div>
 
-<script src="../DataTables/datatables.js"></script>
 
 <script>
     function togglePassword(id) {

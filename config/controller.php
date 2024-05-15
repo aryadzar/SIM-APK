@@ -23,9 +23,9 @@ function tambah_teknisi($post, $files){
     $nama_teknisi = $post['nama_teknisi'];
     $nip_teknisi = $post['nip_teknisi'];
 
-    $result =  mysqli_query($conn, "SELECT username_teknisi FROM teknisi WHERE username_teknisi='$username_teknisi'");
+    $result_username =  mysqli_query($conn, "SELECT username_teknisi FROM teknisi WHERE username_teknisi='$username_teknisi'");
 
-    if(mysqli_fetch_assoc($result)){
+    if(mysqli_fetch_assoc($result_username)){
         echo "
             <script>
                 alert('username sudah terdaftar');
@@ -35,6 +35,17 @@ function tambah_teknisi($post, $files){
         return false;
     }
 
+    $result_nip =  mysqli_query($conn, "SELECT nip_teknisi FROM teknisi WHERE nip_teknisi='$nip_teknisi'");
+
+    if(mysqli_fetch_assoc($result_nip)){
+        echo "
+            <script>
+                alert('NIP Pegawai sudah terdaftar');
+            </script>
+        ";
+
+        return false;
+    }
 
     if($files["gambar_teknisi"]["error"] === 4){
       echo"

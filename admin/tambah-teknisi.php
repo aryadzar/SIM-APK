@@ -43,10 +43,16 @@ if(isset($_POST["ubah_teknisi"])){
 ?>
 
 <div class="container mt-5 ">
-    <table class="table table-hover table-info" id="table">
-        <h1>Data Teknisi</h1>
-        <hr>
-        <br> 
+    <h1>Data Teknisi</h1>
+    <hr>
+    <br> 
+    <div class="d-flex flex-row-reverse">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#tambah_teknisi">
+        Tambah Teknisi           
+        </button>
+    </div>
+    <table class="table table-hover table-info mt-2 " id="table">
         <thead>
             <tr>
                 <th>No</th>
@@ -135,19 +141,14 @@ if(isset($_POST["ubah_teknisi"])){
                         </div>
 
                         <a href="hapus-teknisi.php?id_teknisi=<?= $teknisi["id_teknisi"]?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Teknisi ?')">Hapus</a>
+                    
                     </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
     <hr>
-    <div class="d-flex flex-row-reverse">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah_teknisi">
-        Tambah Teknisi           
-        </button>
 
-    </div>
 </div>
 
 <!-- Modal Tambah Teknisi -->

@@ -84,7 +84,7 @@ $result = mysqli_fetch_assoc($query);
           <a class="nav-link" aria-current="page" href="tambah-teknisi.php">Teknisi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pesawat</a>
+          <a class="nav-link" href="tambah-pesawat.php">Pesawat</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Manager</a>

@@ -16,7 +16,7 @@ if(isset($_POST["login"])){
 
     $result_teknisi = mysqli_query($conn, "SELECT * FROM teknisi WHERE username_teknisi='$username'" );
     $result_admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'" );
-    $result_manajer = mysqli_query($conn,"SELECT * FROM manajer WHERE username='$username'" );
+    $result_manajer = mysqli_query($conn,"SELECT * FROM manajer WHERE username_manajer='$username'" );
 
     if(mysqli_num_rows($result_teknisi) == 1){
         $row = mysqli_fetch_assoc($result_teknisi);
@@ -29,7 +29,7 @@ if(isset($_POST["login"])){
     }else if(mysqli_num_rows($result_manajer) == 1){
         $row = mysqli_fetch_assoc($result_manajer);
         $_SESSION["manajer"] = true;
-        if($row["password"] == $password){
+        if($row["password_manajer"] == $password){
             $id_manajer = $row["id_manajer"];
             header("Location: manajer.php"); // Perbaikan di sini
             exit; // Sisipkan exit setelah header

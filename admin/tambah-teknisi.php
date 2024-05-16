@@ -98,7 +98,7 @@ if(isset($_POST["ubah_teknisi"])){
                                     <div class="container">
                                     <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                                         <div class="col">
-                                            <div class="mt-3">      
+                                            <div class="mt-3"> 
                                                 <input type="hidden" class="form-control" name="id_teknisi" placeholder="ID Teknisi" value="<?=$teknisi["id_teknisi"]?>"  required>
                                             </div>
                                             <div class="mt-3">      

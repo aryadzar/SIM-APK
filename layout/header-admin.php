@@ -54,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
           margin-right: 5px ;
         }
 
-        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can{
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus{
           font-size: 15px;
           color:#fff;
           
@@ -80,6 +80,7 @@ $result = mysqli_fetch_assoc($query);
         #footer{
             color: #fff;
             text-align: center;
+            margin-top: 500px;
         }
     </style>
 </head>

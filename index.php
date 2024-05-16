@@ -36,8 +36,8 @@ if(isset($_POST["login"])){
         }
     }else if(mysqli_num_rows($result_admin)== 1){
         $row = mysqli_fetch_assoc($result_admin);
-        $_SESSION["admin"] = true;
         if($row["password"] == $password){
+            $_SESSION["admin"] = true;
             $_SESSION["id_admin"] = $row["id_admin"];
             header("Location: admin/admin.php"); // Perbaikan di sini
             exit; // Sisipkan exit setelah header
@@ -195,6 +195,7 @@ if(isset($_POST["login"])){
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

@@ -59,10 +59,15 @@
     }   
     );
 </script>
-<!-- <div id="footer" class="p-3 mt-5 bg-primary fixed-bottom">
+
+
+
+
+<div id="footer" class="p-2 bg-primary">
     <div class="container text-center mt-5" >
         <p>&copy; 2024 SIM-APK. All rights reserved.</p>
     </div>
-</div> -->
+</div>
+
 </body>
 </html>

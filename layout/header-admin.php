@@ -48,6 +48,18 @@ $result = mysqli_fetch_assoc($query);
             font-size: 55px;
         }
 
+        .fa-user{
+          font-size : 30px;
+          color:black;
+          margin-right: 5px ;
+        }
+
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can{
+          font-size: 15px;
+          color:#fff;
+          
+        }
+
         .fa-eye, .fa-eye-slash{
             font-size: 17px;
             color: black;
@@ -94,7 +106,7 @@ $result = mysqli_fetch_assoc($query);
     
     <span class="nav-item dropdown">
       <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <?=$result["nama"]?>
+      <i class="fa-solid fa-user"></i> <?=$result["nama"]?>
         </a>
       <ul class="dropdown-menu ">
         <li><img class="dropdown-item" src="../gambar_admin/gambar_admin.png" alt="gambar admin" width="50%" height="50%"></li>

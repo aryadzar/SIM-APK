@@ -4,6 +4,8 @@
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.0.7/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/datatables.min.js"></script>
 
 <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.7/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/sc-2.4.2/datatables.min.js"></script>
+
+<!-- script buat modal -->
 <script>
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')
@@ -14,6 +16,7 @@
 
 </script>
 
+<!-- script buat JQuery -->
 <script>
     let table = new DataTable('#table', {
         lengthMenu: [5, 10, 15, 20, 25, 100],
@@ -21,24 +24,38 @@
                 buttons: [
                     {
                         extend: 'copy',
-                        text: 'Salin', // Mengubah nama tombol
+                        text: '<i class="fa-regular fa-copy"></i> Salin', // Mengubah nama tombol
                         className: 'btn btn-primary' // Mengubah warna tombol
                     },
                     {
                         extend: 'excel',
-                        text: 'Unduh Excel',
+                        text: '<i class="fa-regular fa-file-excel"></i> Unduh Excel',
                         className: 'btn btn-success'
                     },
                     {
                         extend: 'pdf',
-                        text: 'Unduh PDF',
+                        text: '<i class="fa-regular fa-file-pdf""></i> Unduh PDF',
                         className: 'btn btn-danger'
                     }
                 ],
         layout: {
+            top2End: 'search',
             topEnd: 'buttons'
-        }
+        },
+        language: {
+                    lengthMenu: 'Tampilkan _MENU_ entri',
+                    search: 'Cari:',
+                    info: "Table dari _START_ ke _END_ dari _TOTAL_ entri",
 
+                    paginate: {
+                        first: 'first',
+                        last: 'end',
+                        next: '>',
+                        previous: '<'
+                    },
+                    zeroRecords: 'Data yang dicari tidak tersedia',
+                    searchPlaceholder: 'Cari Disini'
+                }
     }   
     );
 </script>

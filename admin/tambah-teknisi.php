@@ -49,7 +49,7 @@ if(isset($_POST["ubah_teknisi"])){
     <div class="d-flex flex-row-reverse">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary mb-5" data-bs-toggle="modal" data-bs-target="#tambah_teknisi">
-        Tambah Teknisi           
+        <i class="fa-solid fa-user-plus"></i> Tambah Teknisi           
         </button>
     </div>
     <table class="table table-hover table-info mt-2 " id="table">
@@ -83,7 +83,7 @@ if(isset($_POST["ubah_teknisi"])){
                     </td>
                     <td width="15%">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit_teknisi<?=$teknisi["id_teknisi"]?>">
-                            Ubah
+                        <i class="fa-regular fa-pen-to-square"></i>    Ubah
                         </button>
                         
                         <!-- Modal Edit Teknisi -->
@@ -140,7 +140,8 @@ if(isset($_POST["ubah_teknisi"])){
                           </div>
                         </div>
 
-                        <a href="hapus-teknisi.php?id_teknisi=<?= $teknisi["id_teknisi"]?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Teknisi ?')">Hapus</a>
+                        <a href="hapus-teknisi.php?id_teknisi=<?= $teknisi["id_teknisi"]?>" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Teknisi ?')">
+                        <i class="fa-regular fa-trash-can"></i> Hapus</a>
                     
                     </td>
             </tr>

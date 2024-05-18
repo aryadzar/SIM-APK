@@ -423,4 +423,89 @@ function tambah_manajer($post, $files){
   return mysqli_affected_rows($conn);
 }
 
+function update_manajer($post, $files){
+  global $conn;
+
+  $id_manajer = $post['id_manajer'];
+  $username_manajer = $post['username_manajer'];
+  $password_manajer = $post['password_manajer'];
+  $nama_manajer = $post['nama_manajer'];
+  $nip_manajer = $post['nip_manajer'];
+
+
+
+
+  if($files["gambar_manajer"]["error"] === 4){
+      echo"
+          <script>
+            alert('Gambar Manajer Belum Di Upload');
+          </script>
+
+        ";
+        return false;
+  }
+
+  $fileName = $files["gambar_manajer"]["name"];
+  $fileSize = $files["gambar_manajer"]["size"];
+  $tmpName =  $files["gambar_manajer"]["tmp_name"];
+
+  $validImageExtension = ['jpg', 'jpeg', 'png'];
+  $imageExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+  if(!in_array($imageExtension, $validImageExtension)){
+      echo "
+        <script>
+        alert('Gambar harus jpg, jpeg, png');
+      </script>
+      ";
+
+      return false;
+  }
+
+  if($fileSize > 5000000){
+      echo "
+      <script>
+        alert('Gambar tidak boleh lebih dari 5MB');
+      </script>
+      ";
+
+      return false;
+  }
+  $queryOldImage = "SELECT gambar_manajer FROM manajer WHERE id_manajer = '$id_manajer'";
+  $resultOldImage = mysqli_query($conn, $queryOldImage);
+  $rowOldImage = mysqli_fetch_assoc($resultOldImage);
+  $oldImageName = $rowOldImage['gambar_manajer'];
+
+
+  unlink("../gambar_manajer/$oldImageName");
+
+
+  $newImageName = uniqid();
+  $newImageName .= ".".$imageExtension;
+
+  move_uploaded_file($tmpName, "../gambar_manajer/".$newImageName );
+
+  $query = "UPDATE manajer SET nip_manajer = '$nip_manajer', gambar_manajer = '$newImageName', username_manajer = '$username_manajer', password_manajer='$password_manajer' 
+  , nama_manajer='$nama_manajer' WHERE id_manajer = '$id_manajer'";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
+function delete_manajer($id_manajer){
+  global $conn;
+
+  $query = "DELETE FROM manajer WHERE id_manajer = '$id_manajer'";
+  
+  $queryOldImage = "SELECT gambar_manajer FROM manajer WHERE id_manajer = '$id_manajer'";
+  $resultOldImage = mysqli_query($conn, $queryOldImage);
+  $rowOldImage = mysqli_fetch_assoc($resultOldImage);
+  $oldImageName = $rowOldImage['gambar_manajer'];
+
+  unlink("../gambar_manajer/$oldImageName");
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+
+}
 ?>

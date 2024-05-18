@@ -28,7 +28,7 @@ $result_manajer = mysqli_num_rows($query_manager );
               <div class="card-header"><strong>Active Plane</strong></div>
               <div class="card-body">
                 <h1 class="card-title"><i class="fa-solid fa-plane"></i></h1>
-                <h2 class="card-tittle"><?= $resSult_pesawat ?></h2>
+                <h2 class="card-tittle"><?= $result_pesawat ?></h2>
               </div>
             </div>
         </div>

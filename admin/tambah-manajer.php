@@ -15,12 +15,30 @@ if(isset($_POST["tambah_manajer"])){
         ";  
     }else{
         echo "<script>
-        alert('Data Manajer Berhasil Ditambahkan');
+        alert('Data Manajer Gagal Ditambahkan');
         document.location.href = 'tambah-manajer.php';
         </script>
         ";  
     }
 }
+
+if (isset($_POST["ubah_manajer"])){
+    if(update_manajer($_POST, $_FILES) > 0){
+        echo "<script>
+        alert('Data Manajer Berhasil Diubah');
+        document.location.href = 'tambah-manajer.php';
+        </script>
+        ";  
+    }else{
+        echo "<script>
+        alert('Data Manajer Gagal Diubah');
+        document.location.href = 'tambah-manajer.php';
+        </script>
+        ";  
+    }
+}
+
+
 
 ?>
 
@@ -66,6 +84,59 @@ if(isset($_POST["tambah_manajer"])){
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit_manajer<?=$manajer["id_manajer"]?>">
                             <i class="fa-regular fa-pen-to-square"></i>    Ubah
                     </button>
+                        <!-- Modal Edit Teknisi -->
+                        <div class="modal fade" id="edit_manajer<?=$manajer["id_manajer"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Ubah Data Teknisi</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                    <div class="container">
+                                    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                                        <div class="col">
+                                            <div class="mt-3"> 
+                                                <input type="hidden" class="form-control" name="id_manajer" placeholder="ID manajer" value="<?=$manajer["id_manajer"]?>"  required>
+                                            </div>
+                                            <div class="mt-3">      
+                                                <label for="" class="form-label ">Username Manajer <span style="color:red;">*</span></label>
+                                                <input type="text" class="form-control" name="username_manajer" placeholder="Username Manajer" value="<?=$manajer["username_manajer"]?>" required>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="" class="form-label">Password Manajer <span style="color:red;">*</span></label>
+                                                <input type="password" class="form-control" name="password_manajer" placeholder="Password Manajer" value="<?=$manajer["password_manajer"]?>" required >
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="" class="form-label">NIP Manajer <span style="color:red;">*</span></label>
+                                                <input type="number" class="form-control" name="nip_manajer" placeholder="NIP Manajer" value="<?=$manajer["nip_manajer"]?>" required>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="" class="form-label">Nama Manajer <span style="color:red;">*</span></label>
+                                                <input type="text" class="form-control" name="nama_manajer" placeholder="Nama manajer" value="<?=$manajer["nama_manajer"]?>" required>
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="" class="form-label">Gambar sebelumnya : </label>
+                                                <br>
+                                                <img src="../gambar_manajer/<?= $manajer["gambar_manajer"]?>" alt="gambar manajer" height="20%" width="20%">
+                                            </div>
+                                            <div class="mt-3">
+                                                <label for="" class="form-label">Gambar Manajer <span style="color:red;">*</span></label>
+                                                <input type="file" class="form-control" name="gambar_manajer" placeholder="Gambar manajer" required>
+                                            </div>
+                                            
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="Ubah" class="btn btn-primary" name="ubah_manajer">Ubah</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>            
                     <a href="hapus-manajer.php?id_manajer=<?=$manajer["id_manajer"]?>" class="btn btn-danger" onclick="return confirm('Yakin mau menghapus Manajer ? ')"><i class="fa-regular fa-trash-can"></i> Hapus</a>    
                 </td>
             </tr>

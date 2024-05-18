@@ -1,6 +1,10 @@
 <?php
 include '../config/controller.php';
+session_start();
 
+if(!isset($_SESSION["admin"])){
+    header("Location: ../index.php");
+}
 $id_pesawat = (int) $_GET['id_pesawat'];
 
 if(delete_pesawat($id_pesawat)> 0){

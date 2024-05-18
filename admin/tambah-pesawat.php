@@ -76,7 +76,7 @@ if(isset($_POST["ubah_pesawat"])){
                 <td><?=$pesawat["boieng_pesawat"]?></td>
                 <td><?=$pesawat["jenis_pesawat"]?></td>
                 <td class="text-center"><?=$pesawat["kapasitas_penumpang"]?></td>
-                <td width="15%">
+                <td width="18%">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit_pesawat<?=$pesawat["id_pesawat"]?>">
                     <i class="fa-regular fa-pen-to-square"></i>  Ubah
                     </button>
@@ -166,7 +166,7 @@ if(isset($_POST["ubah_pesawat"])){
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data Teknisi</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data Pesawat</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -195,7 +195,7 @@ if(isset($_POST["ubah_pesawat"])){
                         </select>
                     <div class="mt-3">      
                         <label for="" class="form-label ">Kapasitas Penumpang<span style="color:red;">*</span></label>
-                        <input type="number" class="form-control" name="kapasitas_penumpang" placeholder="Nomor registrasi" required>
+                        <input type="number" class="form-control" name="kapasitas_penumpang" placeholder="Kapasitas Penumpang" required>
                     </div>
                     </div>
                     <div class="mt-3">

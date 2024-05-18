@@ -60,7 +60,25 @@
     );
 </script>
 
+<script>
+    function togglePassword(id) {
+        var password = document.getElementById("password" + id);
+        var passwordPlain = document.getElementById("password_plain" + id);
+        var button = event.target;
 
+        if (password.style.display === "none") {
+            password.style.display = "inline";
+            passwordPlain.style.display = "none";
+            button.classList.remove("fa-eye-slash");
+            button.classList.add("fa-eye");
+        } else {
+            password.style.display = "none";
+            passwordPlain.style.display = "inline";
+            button.classList.remove("fa-eye");
+            button.classList.add("fa-eye-slash");
+        }
+    }
+</script>
 
 
 <div id="footer" class="p-2 bg-primary">

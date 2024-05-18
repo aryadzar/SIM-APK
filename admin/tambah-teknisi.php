@@ -71,7 +71,7 @@ if(isset($_POST["ubah_teknisi"])){
                 <?php foreach( $data_teknisi as $teknisi ): ?>
                     <td><?= $no++?></td>
                     <td><?=$teknisi["nip_teknisi"]?></td>
-                    <td class="text-center"><img src="../gambar_teknisi/<?= $teknisi["gambar_teknisi"]?>" alt="gambar teknisi" width="20%" height="20%"></td>
+                    <td class="text-center"><img src="../gambar_teknisi/<?= $teknisi["gambar_teknisi"]?>" alt="gambar teknisi" width="50%" height="50%"></td>
                     <td><?=$teknisi["nama_teknisi"]?></td>
                     <td><?=$teknisi["username_teknisi"]?></td>
                     <td>
@@ -81,7 +81,7 @@ if(isset($_POST["ubah_teknisi"])){
                             <i class="fas fa-eye"></i>
                         </a>
                     </td>
-                    <td width="15%">
+                    <td width="18%">
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit_teknisi<?=$teknisi["id_teknisi"]?>">
                         <i class="fa-regular fa-pen-to-square"></i>    Ubah
                         </button>
@@ -111,7 +111,7 @@ if(isset($_POST["ubah_teknisi"])){
                                             </div>
                                             <div class="mt-3">
                                                 <label for="" class="form-label">NIP Teknisi <span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control" name="nip_teknisi" placeholder="NIP Teknisi" value="<?=$teknisi["nip_teknisi"]?>" required>
+                                                <input type="number" class="form-control" name="nip_teknisi" placeholder="NIP Teknisi" value="<?=$teknisi["nip_teknisi"]?>" required>
                                             </div>
                                             <div class="mt-3">
                                                 <label for="" class="form-label">Nama Teknisi <span style="color:red;">*</span></label>
@@ -174,7 +174,7 @@ if(isset($_POST["ubah_teknisi"])){
                     </div>
                     <div class="mt-3">
                         <label for="" class="form-label">NIP Teknisi <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" name="nip_teknisi" placeholder="NIP Teknisi" required>
+                        <input type="number" class="form-control" name="nip_teknisi" placeholder="NIP Teknisi" required>
                     </div>
                     <div class="mt-3">
                         <label for="" class="form-label">Nama Teknisi <span style="color:red;">*</span></label>
@@ -199,25 +199,7 @@ if(isset($_POST["ubah_teknisi"])){
 </div>
 
 
-<script>
-    function togglePassword(id) {
-        var password = document.getElementById("password" + id);
-        var passwordPlain = document.getElementById("password_plain" + id);
-        var button = event.target;
 
-        if (password.style.display === "none") {
-            password.style.display = "inline";
-            passwordPlain.style.display = "none";
-            button.classList.remove("fa-eye-slash");
-            button.classList.add("fa-eye");
-        } else {
-            password.style.display = "none";
-            passwordPlain.style.display = "inline";
-            button.classList.remove("fa-eye");
-            button.classList.add("fa-eye-slash");
-        }
-    }
-</script>
 
 <?php 
 

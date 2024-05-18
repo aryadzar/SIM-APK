@@ -61,8 +61,8 @@ if(isset($_POST["login"])){
     <link rel="shortcut icon" href="img/sim-apk-logo.png" type="image/x-icon">
     <style>
         *{
-            margin: 0;
-            padding: 0;
+            /* margin: 0;
+            padding: 0; */
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }

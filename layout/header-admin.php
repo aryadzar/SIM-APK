@@ -16,7 +16,7 @@ $result = mysqli_fetch_assoc($query);
 ?>
 
 
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,7 +101,7 @@ $result = mysqli_fetch_assoc($query);
           <a class="nav-link" href="tambah-pesawat.php">Pesawat</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Manager</a>
+          <a class="nav-link" href="tambah-manajer.php">Manager</a>
         </li>
     </ul>
     

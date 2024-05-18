@@ -343,4 +343,84 @@ function delete_pesawat($id_pesawat){
   return mysqli_affected_rows($conn);
 }
 
+function tambah_manajer($post, $files){
+  global $conn;
+
+  $username_manajer = $post['username_manajer'];
+  $password_manajer = $post['password_manajer'];
+  $nama_manajer = $post['nama_manajer'];
+  $nip_manajer = $post['nip_manajer'];
+
+  $result_username =  mysqli_query($conn, "SELECT username_manajer FROM manajer WHERE username_manajer='$username_manajer'");
+
+  if(mysqli_fetch_assoc($result_username)){
+      echo "
+          <script>
+              alert('username sudah terdaftar');
+          </script>
+      ";
+
+      return false;
+  }
+
+  $result_nip =  mysqli_query($conn, "SELECT nip_manajer FROM manajer WHERE nip_manajer='$nip_manajer'");
+
+  if(mysqli_fetch_assoc($result_nip)){
+      echo "
+          <script>
+              alert('NIP manajer sudah terdaftar');
+          </script>
+      ";
+
+      return false;
+  }
+
+  if($files["gambar_manajer"]["error"] === 4){
+    echo"
+        <script>
+          alert('Gambar Manajer Belum Di Upload');
+        </script>
+
+      ";
+      return false;
+  }
+
+  $fileName = $files["gambar_manajer"]["name"];
+  $fileSize = $files["gambar_manajer"]["size"];
+  $tmpName =  $files["gambar_manajer"]["tmp_name"];
+
+  $validImageExtension = ['jpg', 'jpeg', 'png'];
+  $imageExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+  if(!in_array($imageExtension, $validImageExtension)){
+    echo "
+      <script>
+      alert('Gambar harus jpg, jpeg, png');
+    </script>
+    ";
+
+    return false;
+  }
+
+  if($fileSize > 5000000){
+    echo "
+    <script>
+      alert('Gambar tidak boleh lebih dari 5MB');
+    </script>
+  ";
+
+  return false;
+  }
+
+  $newImageName = uniqid();
+  $newImageName .= ".".$imageExtension;
+
+  move_uploaded_file($tmpName, "../gambar_manajer/".$newImageName );
+  $query = "INSERT INTO manajer VALUES (NULL, '$nip_manajer', '$newImageName', '$username_manajer','$password_manajer', '$nama_manajer')";
+
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+}
+
 ?>

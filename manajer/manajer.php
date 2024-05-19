@@ -1,19 +1,17 @@
-<?php
+<?php 
 
-include "../layout/header-admin.php";
-include "../connection/koneksi.php";
+include "../layout/header-manajer.php";
 
 $query_teknisi = mysqli_query($conn, "SELECT * FROM teknisi");
 $query_pesawat = mysqli_query($conn, "SELECT * FROM pesawat");
-$query_manager = mysqli_query($conn, "SELECT * FROM manajer");
 
 $result_teknisi = mysqli_num_rows($query_teknisi);
 $result_pesawat = mysqli_num_rows($query_pesawat);
-$result_manajer = mysqli_num_rows($query_manager );
 ?>
+
 <div class="container mt-5">
-    <h3><strong>Dasboard Admin</strong></h3>
-    <div class="row">
+    <h3><strong>Dasboard Manager</strong></h3>
+    <div class="row mt-4">
         <div class="col-md-4">
             <div class="card text-bg-primary mt-3" style="max-width: 18rem;">
               <div class="card-header"><strong>Active Technician</strong></div>
@@ -24,7 +22,7 @@ $result_manajer = mysqli_num_rows($query_manager );
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card text-bg-success mt-3" style="max-width: 18rem;">
+            <div class="card text-bg-info mt-3" style="max-width: 18rem;">
               <div class="card-header"><strong>Active Plane</strong></div>
               <div class="card-body">
                 <h1 class="card-title"><i class="fa-solid fa-plane"></i></h1>
@@ -32,25 +30,14 @@ $result_manajer = mysqli_num_rows($query_manager );
               </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-bg-warning mt-3" style="max-width: 18rem;">
-              <div class="card-header"><strong>Active Manager</strong></div>
-              <div class="card-body">
-                <h1 class="card-title"><i class="fa-solid fa-user-tie"></i></h1>
-                <h2 class="card-tittle"><?= $result_manajer ?></h2>
-              </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
-<?php
+
+<?php 
 
 
+include "../layout/footer-manajer.php";
 
 
-include "../layout/footer-admin.php";
 ?>
-
-

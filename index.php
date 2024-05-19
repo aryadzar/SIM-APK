@@ -7,7 +7,12 @@ include "connection/koneksi.php";
 
 if(isset($_SESSION["admin"])){
     header("Location: admin/admin.php");
+}else if(isset($_SESSION["manajer"])){
+    header("Location: manajer/manajer.php");
+}else if(isset($_SESSION["teknisi"])){
+    header("Location: teknisi/teknisi.php");
 }
+
 
 
 if(isset($_POST["login"])){
@@ -20,18 +25,18 @@ if(isset($_POST["login"])){
 
     if(mysqli_num_rows($result_teknisi) == 1){
         $row = mysqli_fetch_assoc($result_teknisi);
-        $_SESSION["teknisi"] = true;
         if($row["password_teknisi"] == $password){
+            $_SESSION["teknisi"] = true;
             $id_teknisi = $row["id_teknisi"];
             header("Location: teknisi.php"); // Perbaikan di sini
             exit; // Sisipkan exit setelah header
         }
     }else if(mysqli_num_rows($result_manajer) == 1){
         $row = mysqli_fetch_assoc($result_manajer);
-        $_SESSION["manajer"] = true;
         if($row["password_manajer"] == $password){
-            $id_manajer = $row["id_manajer"];
-            header("Location: manajer.php"); // Perbaikan di sini
+            $_SESSION["manajer"] = true;
+            $_SESSION["id_manajer"] = $row["id_manajer"];
+            header("Location: manajer/manajer.php"); // Perbaikan di sini
             exit; // Sisipkan exit setelah header
         }
     }else if(mysqli_num_rows($result_admin)== 1){

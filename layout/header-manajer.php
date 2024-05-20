@@ -54,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
           margin-right: 5px ;
         }
 
-        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus{
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus{
           font-size: 15px;
           color:#fff;
           
@@ -82,6 +82,7 @@ $result = mysqli_fetch_assoc($query);
             text-align: center;
             margin-top: 500px;
         }
+
     </style>
 </head>
 <body>
@@ -95,7 +96,7 @@ $result = mysqli_fetch_assoc($query);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Jadwal Teknisi</a>
+          <a class="nav-link" aria-current="page" href="jadwal-teknisi.php">Jadwal Teknisi</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Riwayat Teknisi</a>

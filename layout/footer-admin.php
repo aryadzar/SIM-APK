@@ -19,6 +19,7 @@
 <!-- script buat JQuery -->
 <script>
     let table = new DataTable('#table', {
+
         lengthMenu: [5, 10, 15, 20, 25, 100],
         pageLength: 5,
                 buttons: [

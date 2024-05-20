@@ -31,6 +31,7 @@ $result = mysqli_fetch_assoc($query);
         *{
             font-family: "Poppins", sans-serif;
         }
+        
 
         body{
 
@@ -80,8 +81,9 @@ $result = mysqli_fetch_assoc($query);
         #footer{
             color: #fff;
             text-align: center;
-            margin-top: 500px;
+            margin-top: 495px;
         }
+        
     </style>
 </head>
 <body>

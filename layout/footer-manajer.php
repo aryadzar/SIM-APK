@@ -20,7 +20,8 @@
 
 <!-- script buat JQuery -->
 <script>
-    let table = new DataTable('#table', {
+    $(document).ready(function() {
+    $('#table_main').DataTable({
         lengthMenu: [5, 10, 15, 20, 25, 100],
         pageLength: 5,
                 buttons: [
@@ -57,9 +58,16 @@
                     },
                     zeroRecords: 'Data yang dicari tidak tersedia',
                     searchPlaceholder: 'Cari Disini'
-                }
-    }   
-    );
+                }    });
+    $('#table_modal').DataTable({
+        lengthMenu: [5, 10, 15, 20, 25, 100],
+        pageLength: 5,
+
+        language: {
+            "infoFiltered":   ""
+                }    
+        });
+    });
 </script>
 
 <script>

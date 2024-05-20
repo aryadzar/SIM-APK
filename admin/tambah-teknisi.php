@@ -52,7 +52,7 @@ if(isset($_POST["ubah_teknisi"])){
         <i class="fa-solid fa-user-plus"></i> Tambah Teknisi           
         </button>
     </div>
-    <table class="table table-hover table-info mt-2 " id="table">
+    <table class="table table-hover table-info mt-2" id="table">
         <thead>
             <tr>
                 <th>No</th>

@@ -21,7 +21,7 @@ $result = mysqli_fetch_assoc($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin SIM-APK</title>
+    <title>Manager SIM-APK</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d931a8b882.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/sim-apk-logo.png" type="image/x-icon">
@@ -54,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
           margin-right: 5px ;
         }
 
-        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus{
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus, .fa-note-sticky{
           font-size: 15px;
           color:#fff;
           
@@ -80,7 +80,7 @@ $result = mysqli_fetch_assoc($query);
         #footer{
             color: #fff;
             text-align: center;
-            margin-top: 500px;
+            margin-top: 420px;
         }
 
     </style>
@@ -96,7 +96,7 @@ $result = mysqli_fetch_assoc($query);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="jadwal-teknisi.php">Jadwal Teknisi</a>
+          <a class="nav-link" aria-current="page" href="jadwal-teknisi.php">Jadwal Pemeliharaan</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Riwayat Teknisi</a>

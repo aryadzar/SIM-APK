@@ -508,4 +508,27 @@ function delete_manajer($id_manajer){
   return mysqli_affected_rows($conn);
 
 }
+
+function tambah_jadwal($post){
+  global $conn;
+
+  $id_pesawat = $post["id_pesawat"];
+  $jadwal_pemeliharaan = $post["jadwal_pemeliharaan"];
+  $deskripsi = $post["deskripsi"];
+
+  $query = "INSERT INTO jadwal_pesawat VALUES (NULL, '$id_pesawat','$jadwal_pemeliharaan','$deskripsi') ";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn);
+
+}
+
+function delete_jadwal($id_jadwal){
+  global $conn;
+
+  mysqli_query($conn, "DELETE FROM jadwal_pesawat WHERE id_jadwal_pemeliharaan = '$id_jadwal'");
+
+  return mysqli_affected_rows($conn);
+
+}
 ?>

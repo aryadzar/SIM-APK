@@ -38,7 +38,7 @@ $result_jadwal = mysqli_num_rows($query_jadwal);
             <div class="card text-bg-danger mt-3" style="max-width: 18rem;">
               <div class="card-header"><strong>Active Plane Schedule</strong></div>
               <div class="card-body">
-                <h1 class="card-title"><i class="fa-solid fa-plane"></i></h1>
+                <h1 class="card-title"><i class="fa-solid fa-plane-circle-exclamation"></i></i></h1>
                 <h2 class="card-tittle"><?= $result_jadwal ?></h2>
               </div>
             </div>

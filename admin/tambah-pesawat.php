@@ -56,9 +56,9 @@ if(isset($_POST["ubah_pesawat"])){
             <tr>
                 <th>No</th>
                 <th>No Registrasi</th>
-                <th class="text-center">Gambar Pesawat</th>
-                <th>Nama Pesawat</th>
-                <th>Boeing Pesawat</th>
+                <th class="text-center">Gambar Maskapai</th>
+                <th>Nama Maskapai</th>
+                <th>Tipe Pesawat</th>
                 <th>Jenis Pesawat</th>
                 <th>Kapasitas Penumpang</th>
                 <th class="text-center">Action</th>
@@ -97,15 +97,15 @@ if(isset($_POST["ubah_pesawat"])){
                                         </div>
                                         <div class="mt-3">      
                                             <label for="" class="form-label ">Nomor Registrasi <span style="color:red;">*</span></label>
-                                            <input type="number" class="form-control" name="nomor_registrasi" placeholder="Nomor registrasi" value="<?=$pesawat["no_registrasi"]?>" required>
+                                            <input type="text" class="form-control" name="nomor_registrasi" placeholder="Nomor registrasi" value="<?=$pesawat["no_registrasi"]?>" required>
                                         </div>
                                         <div class="mt-3">
-                                            <label for="" class="form-label">Nama Pesawat <span style="color:red;">*</span></label>
+                                            <label for="" class="form-label">Nama Maskapai <span style="color:red;">*</span></label>
                                             <input type="text" class="form-control" name="nama_pesawat" placeholder="Nama Pesawat" required value="<?=$pesawat["nama_pesawat"]?>" >
                                         </div>
                                         <div class="mt-3">
-                                            <label for="" class="form-label">Boeing Pesawat <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" name="boeing_pesawat" placeholder="Boeing Pesawat" required value="<?=$pesawat["boieng_pesawat"]?>">
+                                            <label for="" class="form-label">Tipe Pesawat <span style="color:red;">*</span></label>
+                                            <input type="text" class="form-control" name="boeing_pesawat" placeholder="Tipe Body Pesawat" required value="<?=$pesawat["boieng_pesawat"]?>">
                                         </div>
                                         <div class="mt-3">
                                             <label for="" class="form-label">Jenis Pesawat <span style="color:red;">*</span></label>
@@ -123,12 +123,12 @@ if(isset($_POST["ubah_pesawat"])){
                                             <input type="number" class="form-control" name="kapasitas_penumpang" placeholder="Nomor registrasi" required value="<?=$pesawat["kapasitas_penumpang"]?>">
                                         </div>
                                         <div class="mt-3">
-                                            <label for="" class="form-label">Gambar Pesawat Sebelumnya : </label>
+                                            <label for="" class="form-label">Gambar Maskapai Sebelumnya : </label>
                                             <img src="../gambar_pesawat/<?=$pesawat["gambar_pesawat"]?>" alt="logo" height="40%" width="40%">
                                         </div>
                                         <div class="mt-3">
-                                            <label for="" class="form-label">Gambar Pesawat <span style="color:red;">*</span></label>
-                                            <input type="file" class="form-control" name="gambar_pesawat" placeholder="gambar Teknisi" required>
+                                            <label for="" class="form-label">Gambar Maskapai <span style="color:red;">*</span></label>
+                                            <input type="file" class="form-control" accept=".jpg, .jpeg, .png" name="gambar_pesawat" placeholder="gambar Teknisi" required>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -175,15 +175,11 @@ if(isset($_POST["ubah_pesawat"])){
                 <div class="col">
                     <div class="mt-3">      
                         <label for="" class="form-label ">Nomor Registrasi <span style="color:red;">*</span></label>
-                        <input type="number" class="form-control" name="nomor_registrasi" placeholder="Nomor registrasi" required>
+                        <input type="text" class="form-control" name="nomor_registrasi" placeholder="Nomor registrasi" required>
                     </div>
                     <div class="mt-3">
-                        <label for="" class="form-label">Nama Pesawat <span style="color:red;">*</span></label>
+                        <label for="" class="form-label">Nama Maskapai <span style="color:red;">*</span></label>
                         <input type="text" class="form-control" name="nama_pesawat" placeholder="Nama Pesawat" required >
-                    </div>
-                    <div class="mt-3">
-                        <label for="" class="form-label">Boeing Pesawat <span style="color:red;">*</span></label>
-                        <input type="text" class="form-control" name="boeing_pesawat" placeholder="Boeing Pesawat" required>
                     </div>
                     <div class="mt-3">
                         <label for="" class="form-label">Jenis Pesawat <span style="color:red;">*</span></label>
@@ -193,14 +189,18 @@ if(isset($_POST["ubah_pesawat"])){
                             <option value="Jet">Jet</option>
                             <option value="Boeing">Boeing</option>
                         </select>
+                    <div class="mt-3" id="tipe-pesawat-container">
+                      <label for="" class="form-label">Tipe Pesawat <span style="color:red;">*</span></label>
+                      <input type="text" class="form-control" name="boeing_pesawat" placeholder="Tipe Body Pesawat" required>
+                    </div>
                     <div class="mt-3">      
                         <label for="" class="form-label ">Kapasitas Penumpang<span style="color:red;">*</span></label>
                         <input type="number" class="form-control" name="kapasitas_penumpang" placeholder="Kapasitas Penumpang" required>
                     </div>
                     </div>
                     <div class="mt-3">
-                        <label for="" class="form-label">Gambar Pesawat <span style="color:red;">*</span></label>
-                        <input type="file" class="form-control" name="gambar_pesawat" placeholder="gambar Teknisi" required>
+                        <label for="" class="form-label">Gambar Maskapai <span style="color:red;">*</span></label>
+                        <input type="file" class="form-control" name="gambar_pesawat" accept=".jpg, .jpeg, .png" placeholder="gambar Teknisi" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

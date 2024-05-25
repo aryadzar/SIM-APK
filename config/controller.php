@@ -36,17 +36,6 @@ function tambah_pesawat($post, $files){
         return false;
       }
       
-      $result_boeing = mysqli_query($conn, "SELECT boieng_pesawat from pesawat where boieng_pesawat = '$boeing_pesawat'");
-
-      if(mysqli_fetch_assoc($result_boeing)){
-        echo "
-        <script>
-            alert('Boeing pesawat sudah terdaftar');
-        </script>
-        ";
-
-        return false;
-      }
 
       if($files["gambar_pesawat"]["error"] === 4){
             echo"
@@ -515,8 +504,8 @@ function tambah_jadwal($post){
   $id_pesawat = $post["id_pesawat"];
   $jadwal_pemeliharaan = $post["jadwal_pemeliharaan"];
   $deskripsi = $post["deskripsi"];
-
-  $query = "INSERT INTO jadwal_pesawat VALUES (NULL, '$id_pesawat','$jadwal_pemeliharaan','$deskripsi') ";
+  
+  $query = "INSERT INTO jadwal_pesawat VALUES (NULL, '$id_pesawat','$jadwal_pemeliharaan','$deskripsi', 'Belum Diperbaiki') ";
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
@@ -531,4 +520,79 @@ function delete_jadwal($id_jadwal){
   return mysqli_affected_rows($conn);
 
 }
+
+
+function edit_jadwal($post){
+  global $conn;
+
+  $id_jadwal_pemeliharaan = $post["id_jadwal_pemeliharaan"];
+  $id_pesawat = $post["id_pesawat"];
+  $jadwal_pemeliharaan = $post["jadwal_pemeliharaan"];
+  $deskripsi = $post["deskripsi"];
+
+  mysqli_query($conn, "UPDATE jadwal_pesawat SET id_pesawat = '$id_pesawat', jadwal_pemeliharaan = '$jadwal_pemeliharaan', deskripsi = '$deskripsi'  WHERE id_jadwal_pemeliharaan = '$id_jadwal_pemeliharaan'");
+  
+  return mysqli_affected_rows($conn);
+}
+
+function upload_dokumentasi($post, $files){
+  
+  global $conn;
+
+  $id_teknisi =$_SESSION["id_teknisi"];
+  $id_jadwal = $post["id_jadwal_pemeliharaan"];
+  $laporan = $post["laporan"];
+  $status = $post["status"];
+
+  $totalFiles = count($files['dokumentasi']['name']);
+  $filesArray = array();
+
+  for($i = 0; $i < $totalFiles ; $i++){
+    $imageName = $files['dokumentasi']['name'][$i];
+    $tmpName = $files['dokumentasi']['tmp_name'][$i];
+    $imageSize = $files['dokumentasi']['size'][$i];
+
+    $validImageExtension = ['jpg', 'jpeg', 'png'];
+    $imageExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+
+    if(!in_array($imageExtension, $validImageExtension)){
+        echo "
+          <script>
+          alert('Gambar harus jpg, jpeg, png');
+        </script>
+        ";
+
+        return false;
+    }
+
+    if($imageSize > 5000000){
+        echo "
+        <script>
+          alert('Gambar tidak boleh lebih dari 5MB');
+        </script>
+        ";
+
+        return false;
+    }
+
+    $newImageName = uniqid() . '.' . $imageExtension;
+    
+    move_uploaded_file($tmpName, '../gambar_dokumentasi/'.$newImageName);
+
+    $filesArray[] = $newImageName;
+  }
+
+  $filesArray = json_encode($filesArray);
+
+  mysqli_query($conn, "INSERT INTO dokumentasi_pesawat VALUES(NULL, '$id_teknisi', '$id_jadwal', CURRENT_TIMESTAMP(), '$filesArray', '$laporan')");
+  
+  mysqli_query($conn, "UPDATE jadwal_pesawat SET status = '$status' WHERE id_jadwal_pemeliharaan = '$id_jadwal'");
+
+  return mysqli_affected_rows($conn);
+
+
+}
+
+
+
 ?>

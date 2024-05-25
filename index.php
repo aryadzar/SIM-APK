@@ -27,8 +27,9 @@ if(isset($_POST["login"])){
         $row = mysqli_fetch_assoc($result_teknisi);
         if($row["password_teknisi"] == $password){
             $_SESSION["teknisi"] = true;
+            $_SESSION["id_teknisi"] = $row["id_teknisi"];
             $id_teknisi = $row["id_teknisi"];
-            header("Location: teknisi.php"); // Perbaikan di sini
+            header("Location: teknisi/teknisi.php"); // Perbaikan di sini
             exit; // Sisipkan exit setelah header
         }
     }else if(mysqli_num_rows($result_manajer) == 1){

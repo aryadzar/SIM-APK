@@ -3,7 +3,7 @@
 include "../layout/header-manajer.php";
 include "../config/controller.php";
 
-$data_jadwal = select("SELECT jadwal_pesawat.id_jadwal_pemeliharaan,jadwal_pesawat.id_pesawat ,pesawat.no_registrasi, pesawat.gambar_pesawat, pesawat.nama_pesawat, pesawat.boieng_pesawat, pesawat.jenis_pesawat, pesawat.kapasitas_penumpang,jadwal_pesawat.jadwal_pemeliharaan, jadwal_pesawat.deskripsi FROM pesawat, jadwal_pesawat WHERE pesawat.id_pesawat = jadwal_pesawat.id_pesawat");
+$data_jadwal = select("SELECT jadwal_pesawat.id_jadwal_pemeliharaan,jadwal_pesawat.id_pesawat ,pesawat.no_registrasi, pesawat.gambar_pesawat, pesawat.nama_pesawat, pesawat.boieng_pesawat, pesawat.jenis_pesawat, pesawat.kapasitas_penumpang,jadwal_pesawat.jadwal_pemeliharaan, jadwal_pesawat.deskripsi, jadwal_pesawat.status FROM pesawat, jadwal_pesawat WHERE pesawat.id_pesawat = jadwal_pesawat.id_pesawat");
 $data_pesawat = select("SELECT * FROM pesawat");
 
 if(isset($_POST["tambah_jadwal"])){
@@ -25,7 +25,22 @@ if(isset($_POST["tambah_jadwal"])){
 }
 
 
-
+if(isset($_POST["edit_jadwal"])){
+    if(edit_jadwal($_POST) > 0){
+        echo "
+        <script>
+            alert('Data Jadwal Pemeliharaan Berhasil Diedit');
+            document.location.href = 'jadwal-teknisi.php';
+        </script>";
+    }else{
+        echo "
+        <script>
+            alert('Data Jadwal Pemeliharaan Gagal Diedit');
+            document.location.href = 'jadwal-teknisi.php';
+        </script>
+    ";
+    }
+}
 
 ?>
 
@@ -44,13 +59,14 @@ if(isset($_POST["tambah_jadwal"])){
             <tr>
                 <th>No</th>
                 <th>No Registrasi</th>
-                <th>Gambar Pesawat</th>
-                <th>Nama Pesawat</th>
-                <th>Boeing Pesawat</th>
+                <th>Gambar Maskapai</th>
+                <th>Nama Maskapai</th>
+                <th>Tipe Pesawat</th>
                 <th>Jenis Pesawat</th>
                 <th>Kapasitas Pesawat</th>
                 <th>Jadwal Pemeliharaan</th>
                 <th width="14%">Deskripsi</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -88,7 +104,17 @@ if(isset($_POST["tambah_jadwal"])){
                       </div>
                     </div>
                 </td>
-                <td width="16%">
+                <td>
+                <?php if ($jadwal["status"] === "Belum Diperbaiki"){?>
+                <span class="badge text-bg-danger"> <?=$jadwal["status"]?> </span> 
+            
+                <?php }else if ($jadwal["status"] === "Sedang Diperbaiki") {?>
+                    <span class="badge text-bg-warning"> <?=$jadwal["status"]?> </span> 
+                <?php }else { ?>
+                    <span class="badge text-bg-info"> <?=$jadwal["status"]?> </span> 
+                <?php } ?>                
+                </td>
+                <td width="15%">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit_jadwal<?=$jadwal["id_jadwal_pemeliharaan"]?>">
                         <i class="fa-regular fa-pen-to-square"></i>Ubah
                     </button>
@@ -108,9 +134,9 @@ if(isset($_POST["tambah_jadwal"])){
                                                     <tr>
                                                         <th>No</th>
                                                         <th>No Registrasi</th>
-                                                        <th>Gambar Pesawat</th>
-                                                        <th>Nama Pesawat</th>
-                                                        <th>Boeing Pesawat</th>
+                                                        <th>Gambar Maskapai</th>
+                                                        <th>Nama Maskapai</th>
+                                                        <th>Tipe Pesawat</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -128,6 +154,9 @@ if(isset($_POST["tambah_jadwal"])){
                                             </table>
                                             <div class="col p-5">
                                                 <form action="" method="post">
+                                                <div class="mt-3">
+                                                    <input type="hidden" class="form-control" name="id_jadwal_pemeliharaan" value="<?=$jadwal["id_jadwal_pemeliharaan"]?>"  required >
+                                                </div>  
                                                 <div class="mt-3">      
                                                     <label for="" class="form-label ">No Registrasi Pesawat <span style="color:red;">*</span> (Silahkan pilih berdasarkan ID Pesawat di samping) </label>
                                                     <select class="form-select form-select-sm" aria-label="Large select example" name="id_pesawat" required >
@@ -189,9 +218,9 @@ if(isset($_POST["tambah_jadwal"])){
                             <tr>
                                 <th>No</th>
                                 <th>No Registrasi</th>
-                                <th>Gambar Pesawat</th>
-                                <th>Nama Pesawat</th>
-                                <th>Boeing Pesawat</th>
+                                <th>Gambar Maskapai</th>
+                                <th>Nama Maskapai</th>
+                                <th>Tipe Pesawat</th>
                             </tr>
                         </thead>
                         <tbody>

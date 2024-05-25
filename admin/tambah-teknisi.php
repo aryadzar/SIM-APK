@@ -124,7 +124,7 @@ if(isset($_POST["ubah_teknisi"])){
                                             </div>
                                             <div class="mt-3">
                                                 <label for="" class="form-label">Gambar Teknisi <span style="color:red;">*</span></label>
-                                                <input type="file" class="form-control" name="gambar_teknisi" placeholder="gambar Teknisi" required>
+                                                <input type="file" class="form-control" accept=".jpg, .jpeg, .png" name="gambar_teknisi" placeholder="gambar Teknisi" required>
                                             </div>
                                             
                                             <div class="modal-footer">
@@ -182,7 +182,7 @@ if(isset($_POST["ubah_teknisi"])){
                     </div>
                     <div class="mt-3">
                         <label for="" class="form-label">Gambar Teknisi <span style="color:red;">*</span></label>
-                        <input type="file" class="form-control" name="gambar_teknisi" placeholder="gambar Teknisi" required>
+                        <input type="file" class="form-control" name="gambar_teknisi" accept=".jpg, .jpeg, .png" placeholder="gambar Teknisi" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

@@ -85,6 +85,7 @@ $result = mysqli_fetch_assoc($query);
         }
         
     </style>
+
 </head>
 <body>
 

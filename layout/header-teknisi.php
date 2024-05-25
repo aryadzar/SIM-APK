@@ -3,13 +3,13 @@ include "../connection/koneksi.php";
 
 session_start();
 
-if(!isset($_SESSION["manajer"])){
+if(!isset($_SESSION["teknisi"])){
     header("Location: ../index.php");
 }
 
-$id_manajer = $_SESSION["id_manajer"];
+$id_teknisi = $_SESSION["id_teknisi"];
 
-$query = mysqli_query($conn, "SELECT * FROM manajer WHERE id_manajer = '$id_manajer'");
+$query = mysqli_query($conn, "SELECT * FROM teknisi WHERE id_teknisi = '$id_teknisi'");
 $result = mysqli_fetch_assoc($query);
 
 
@@ -21,7 +21,7 @@ $result = mysqli_fetch_assoc($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manager SIM-APK</title>
+    <title>Teknisi SIM-APK</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/d931a8b882.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../img/sim-apk-logo.png" type="image/x-icon">
@@ -54,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
           margin-right: 5px ;
         }
 
-        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus, .fa-note-sticky, .fa-file-image{
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus, .fa-note-sticky, .fa-upload{
           font-size: 15px;
           color:#fff;
           
@@ -89,28 +89,25 @@ $result = mysqli_fetch_assoc($query);
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="black">
   <div class="container">
-    <a class="navbar-brand" href="manajer.php"><img src="../img/sim-apk-logo.png" alt="logo" class="logo-dashboard">SIM-APK</a>
+    <a class="navbar-brand" href="teknisi.php"><img src="../img/sim-apk-logo.png" alt="logo" class="logo-dashboard">SIM-APK</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="jadwal-teknisi.php">Jadwal Pemeliharaan</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="riwayat-teknisi.php">Riwayat Teknisi</a>
+          <a class="nav-link" aria-current="page" href="upload-dokumentasi.php">Upload Dokumentasi Pesawat</a>
         </li>
 
     </ul>
     
     <span class="nav-item dropdown">
       <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fa-solid fa-user"></i> <?=$result["nama_manajer"]?>
+      <i class="fa-solid fa-user"></i> <?=$result["nama_teknisi"]?>
         </a>
       <ul class="dropdown-menu ">
         <li class="dropdown-item">Foto Profile : </li>
-        <li><img class="dropdown-item" src="../gambar_manajer/<?= $result["gambar_manajer"]?>" alt="gambar admin" width="50%" height="50%"></li>
+        <li><img class="dropdown-item" src="../gambar_teknisi/<?= $result["gambar_teknisi"]?>" alt="gambar teknisi" width="50%" height="50%"></li>
         <br><br>
         <li><a class="dropdown-item" href="../logout.php">Log out</a></li>
       </ul>

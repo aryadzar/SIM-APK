@@ -505,6 +505,18 @@ function tambah_jadwal($post){
   $jadwal_pemeliharaan = $post["jadwal_pemeliharaan"];
   $deskripsi = $post["deskripsi"];
   
+  $result_pes =  mysqli_query($conn, "SELECT * from jadwal_pesawat WHERE id_pesawat = '$id_pesawat' AND (status = 'Sedang Diperbaiki' OR status = 'Belum Diperbaiki')");
+
+  if(mysqli_fetch_assoc($result_pes)){
+    echo "
+    <script>
+        alert('Pesawat Sedang Diperbaiki atau Belum Diperbaiki');
+    </script>
+    ";
+
+    return false;
+  }
+
   $query = "INSERT INTO jadwal_pesawat VALUES (NULL, '$id_pesawat','$jadwal_pemeliharaan','$deskripsi', 'Belum Diperbaiki') ";
   mysqli_query($conn, $query);
 

@@ -24,6 +24,9 @@
     $(document).ready(function() {
     $('#table_main').DataTable({
         lengthMenu: [5, 10, 15, 20, 25, 100],
+        responsive: true,
+        scrollX: true,
+        scrollY: '50vh',
         pageLength: 5,
                 buttons: [
                     {

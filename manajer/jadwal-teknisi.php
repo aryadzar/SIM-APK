@@ -3,7 +3,7 @@
 include "../layout/header-manajer.php";
 include "../config/controller.php";
 
-$data_jadwal = select("SELECT jadwal_pesawat.id_jadwal_pemeliharaan,jadwal_pesawat.id_pesawat ,pesawat.no_registrasi, pesawat.gambar_pesawat, pesawat.nama_pesawat, pesawat.boieng_pesawat, pesawat.jenis_pesawat, pesawat.kapasitas_penumpang,jadwal_pesawat.jadwal_pemeliharaan, jadwal_pesawat.deskripsi, jadwal_pesawat.status FROM pesawat, jadwal_pesawat WHERE pesawat.id_pesawat = jadwal_pesawat.id_pesawat");
+$data_jadwal = select("SELECT jadwal_pesawat.id_jadwal_pemeliharaan,jadwal_pesawat.id_pesawat ,pesawat.no_registrasi, pesawat.gambar_pesawat, pesawat.nama_pesawat, pesawat.boieng_pesawat, pesawat.jenis_pesawat, pesawat.kapasitas_penumpang,jadwal_pesawat.jadwal_pemeliharaan, jadwal_pesawat.deskripsi, jadwal_pesawat.status FROM pesawat, jadwal_pesawat WHERE pesawat.id_pesawat = jadwal_pesawat.id_pesawat ORDER BY id_jadwal_pemeliharaan DESC;");
 $data_pesawat = select("SELECT * FROM pesawat");
 
 if(isset($_POST["tambah_jadwal"])){
@@ -67,7 +67,7 @@ if(isset($_POST["edit_jadwal"])){
                 <th>Jadwal Pemeliharaan</th>
                 <th width="14%">Deskripsi</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th width="15%">Action</th>
             </tr>
         </thead>
 

@@ -54,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
           margin-right: 5px ;
         }
 
-        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus, .fa-note-sticky, .fa-file-image{
+        .fa-file-excel, .fa-file-pdf, .fa-user-plus, .fa-copy, .fa-pen-to-square, .fa-trash-can, .fa-plus, .fa-calendar-plus, .fa-note-sticky, .fa-file-image, .fa-file-circle-check{
           font-size: 15px;
           color:#fff;
           

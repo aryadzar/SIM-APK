@@ -93,6 +93,18 @@ function update_pesawat($post, $files){
   $kapasitas_penumpang = $post["kapasitas_penumpang"];
 
 
+  $result_regis =  mysqli_query($conn, "SELECT no_registrasi FROM pesawat WHERE no_registrasi='$no_registrasi' AND id_pesawat != '$id_pesawat'");
+
+  if(mysqli_fetch_assoc($result_regis)){
+      echo "
+          <script>
+              alert('No Registrasi Pesawat sudah terdaftar');
+          </script>
+      ";
+
+      return false;
+  }
+
   if($files["gambar_pesawat"]["error"] === 4){
         echo"
         <script>
@@ -181,6 +193,18 @@ function tambah_teknisi($post, $files){
         return false;
     }
 
+    $result_manajer =  mysqli_query($conn, "SELECT username_manajer FROM manajer WHERE username_manajer='$username_teknisi'");
+
+    if(mysqli_fetch_assoc($result_manajer)){
+      echo "
+          <script>
+              alert('Username sudah terdaftar di manajer');
+          </script>
+      ";
+
+      return false;
+    }
+
     if($files["gambar_teknisi"]["error"] === 4){
       echo"
           <script>
@@ -250,6 +274,28 @@ function update_teknisi($post, $files){
 
           ";
           return false;
+    }
+    $result_username =  mysqli_query($conn, "SELECT username_teknisi FROM teknisi WHERE username_teknisi='$username_teknisi' AND id_teknisi != '$id_teknisi'");
+
+    if(mysqli_fetch_assoc($result_username)){
+        echo "
+            <script>
+                alert('username sudah terdaftar');
+            </script>
+        ";
+
+        return false;
+    }
+    $result_manajer =  mysqli_query($conn, "SELECT username_manajer FROM manajer WHERE username_manajer='$username_teknisi'");
+
+    if(mysqli_fetch_assoc($result_manajer)){
+      echo "
+          <script>
+              alert('Username sudah terdaftar di manajer');
+          </script>
+      ";
+
+      return false;
     }
 
     $fileName = $files["gambar_teknisi"]["name"];
@@ -364,6 +410,20 @@ function tambah_manajer($post, $files){
       return false;
   }
 
+
+  $result_username =  mysqli_query($conn, "SELECT username_teknisi FROM teknisi WHERE username_teknisi='$username_manajer'");
+
+  if(mysqli_fetch_assoc($result_username)){
+      echo "
+          <script>
+              alert('username sudah terdaftar di teknisi');
+          </script>
+      ";
+
+      return false;
+  }
+
+
   if($files["gambar_manajer"]["error"] === 4){
     echo"
         <script>
@@ -422,7 +482,29 @@ function update_manajer($post, $files){
   $nip_manajer = $post['nip_manajer'];
 
 
+  $result_username =  mysqli_query($conn, "SELECT username_teknisi FROM teknisi WHERE username_teknisi='$username_manajer'");
 
+  if(mysqli_fetch_assoc($result_username)){
+      echo "
+          <script>
+              alert('username sudah terdaftar di teknisi');
+          </script>
+      ";
+
+      return false;
+  }
+
+  $result_username =  mysqli_query($conn, "SELECT username_manajer FROM manajer WHERE username_manajer='$username_manajer' AND id_manajer != '$id_manajer'");
+
+  if(mysqli_fetch_assoc($result_username)){
+      echo "
+          <script>
+              alert('username sudah terdaftar');
+          </script>
+      ";
+
+      return false;
+  }
 
   if($files["gambar_manajer"]["error"] === 4){
       echo"
@@ -541,6 +623,19 @@ function edit_jadwal($post){
   $id_pesawat = $post["id_pesawat"];
   $jadwal_pemeliharaan = $post["jadwal_pemeliharaan"];
   $deskripsi = $post["deskripsi"];
+
+  $result_pes =  mysqli_query($conn, "SELECT * from jadwal_pesawat WHERE id_pesawat = '$id_pesawat' AND (status = 'Sedang Diperbaiki' OR status = 'Belum Diperbaiki') AND
+                                        id_jadwal_pemeliharaan != '$id_jadwal_pemeliharaan'");
+
+  if(mysqli_fetch_assoc($result_pes)){
+    echo "
+    <script>
+        alert('Pesawat Sedang Diperbaiki atau Belum Diperbaiki');
+    </script>
+    ";
+
+    return false;
+  }
 
   mysqli_query($conn, "UPDATE jadwal_pesawat SET id_pesawat = '$id_pesawat', jadwal_pemeliharaan = '$jadwal_pemeliharaan', deskripsi = '$deskripsi'  WHERE id_jadwal_pemeliharaan = '$id_jadwal_pemeliharaan'");
   
